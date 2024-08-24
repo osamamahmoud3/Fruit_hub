@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:fruits_hub/features/auth/presentation/views/cubits/sign_up_cubit/signup_cubit.dart';
 
 import '../../../../../core/styles/app_colors.dart';
 import '../../../../../core/styles/styles.dart';
@@ -15,16 +17,16 @@ class TermsAndConditionsWidget extends StatefulWidget {
 }
 
 class _TermsAndConditionsWidgetState extends State<TermsAndConditionsWidget> {
-  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         CustomCheckbox(
-            isChecked: isChecked,
+            isChecked: context.read<SignUpCubit>().isTermsAndConditionsChecked,
             onChanged: (value) {
               setState(() {
-                isChecked = value!;
+                context.read<SignUpCubit>().isTermsAndConditionsChecked =
+                    value!;
               });
             }),
         const SizedBox(

@@ -7,9 +7,10 @@ class SocialLoginButton extends StatelessWidget {
   const SocialLoginButton({
     super.key,
     required this.image,
-    required this.title,
+    required this.title, this.onPressed,
   });
   final String image, title;
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class SocialLoginButton extends StatelessWidget {
               width: 1),
           borderRadius: BorderRadius.circular(16),
         ),
-        onPressed: () {},
+        onPressed: onPressed,
         child: ListTile(
           title: Text(title,
               textAlign: TextAlign.center, style: AppTextStyles.font16SemiBold),
